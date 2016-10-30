@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+import dj_database_url
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -128,22 +130,20 @@ BOOTSTRAP3 = {
 }
 
 # Heroku settings
-if os.getcwd() == 'app':
-    import dj_database_url
 
-    DATABASES = {
-        'default': dj_database_url.config(default='postgres://localhost')
-    }
+DATABASES = {
+    'default': dj_database_url.config(default='postgres://localhost')
+}
 
-    # Honor the 'X-Forwarded-Proto' header for request.is_secure()
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-    # Allow all host headers
-    ALLOWED_HOSTS = ['*']
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
 
-    # Static assests configuration
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
-    STATIC_FILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-    )
+# Static assests configuration
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
+STATIC_FILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
