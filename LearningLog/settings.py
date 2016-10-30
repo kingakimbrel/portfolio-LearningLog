@@ -61,7 +61,7 @@ ROOT_URLCONF = 'LearningLog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'LearningLog/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,7 +129,7 @@ BOOTSTRAP3 = {
     'include_jquery': True
 }
 
-# Heroku settings
+# Heroku settings - uncomment before pushing to Heroku
 
 DATABASES = {
     'default': dj_database_url.config(default='postgres://localhost')
